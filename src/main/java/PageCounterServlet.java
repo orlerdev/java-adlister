@@ -5,18 +5,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/hello")
-public class HelloWorldServlet extends HttpServlet {
+@WebServlet("/count")
+public class PageCounterServlet extends HttpServlet {
+
+  int pageViews = 0;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-    String username = req.getParameter("username");
+    String count = req.getParameter("count");
+    String reset = req.getParameter("reset");
     res.setContentType("text/html");
     PrintWriter out = res.getWriter();
-    if (username != null){
-      out.printf("<h1>Hello, %s!</h1>", username);
-    } else {
-      out.println("<h1>Hello, World!</h1>");
+    pageViews++;
+    out.printf("<h2>%d page views<h2>", pageViews);
+
+    if (req.getParameter("reset").equalsIgnoreCase("reset")) {
+      pageViews = 0;
     }
   }
 }

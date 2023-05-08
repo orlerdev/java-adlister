@@ -10,10 +10,10 @@ import java.io.PrintWriter;
 public class WelcomeServlet extends HttpServlet {
 
   @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+  protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String username = req.getParameter("username");
-    resp.setContentType("text/html");
-    PrintWriter out = resp.getWriter();
+    res.setContentType("text/html");
+    PrintWriter out = res.getWriter();
     out.println("<h2>Welcome, " + username + "!<h2>");
   }
 }
