@@ -1,4 +1,3 @@
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +11,11 @@ public class WelcomeServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String username = req.getParameter("username");
+    String email = req.getParameter("email");
     res.setContentType("text/html");
-    PrintWriter out = res.getWriter();
-    out.println("<h2>Welcome, " + username + "!<h2>");
+    res.getWriter().printf("""
+            <h2>Username: %s<h2>
+            <p>Email: %s
+            """, username, email);
   }
 }
