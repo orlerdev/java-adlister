@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 80px;
+  width: 100vw;
+  background-color: #77664a;
+  color: floralwhite;
+  font-size: x-large;
+  padding: 20px;
+}
+
+ul {
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+a {
+  color: floralwhite;
+  text-decoration: none;
+}
+
+a:hover,
+a:visited{
+  color: floralwhite;
+  text-decoration: underline;
+}
