@@ -1,19 +1,27 @@
 package models;
 import java.io.Serializable;
+import java.util.List;
 
 public class Author implements Serializable {
-  private int id;
+  private Long id;
   private String firstName;
   private String lastName;
+  private List<Quote> quotes;
 
   public Author() {
   }
 
-  public int getId() {
+  public Author(Long id, String firstName, String lastName) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  public Long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -31,5 +39,13 @@ public class Author implements Serializable {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public List<Quote> getQuotes() {
+    return quotes;
+  }
+
+  public void setQuotes(List<Quote> quotes) {
+    this.quotes = quotes;
   }
 }

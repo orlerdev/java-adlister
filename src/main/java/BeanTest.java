@@ -1,34 +1,12 @@
-import models.Albumn;
-import models.Author;
-import models.Quote;
-
-import java.util.ArrayList;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import models.Album;
 
 public class BeanTest {
-  public static void main(String[] args) {
-    Albumn album = new Albumn();
-    Author author = new Author();
-    Quote quote = new Quote();
-
-    ArrayList<Quote> quotes = new ArrayList<>();
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-    quotes.add(quote);
-
-    for (Quote q : quotes) {
-      System.out.println(q.getContent() + " - " + q.getAuthor().getFirstName() + " " + q.getAuthor().getLastName());
-    }
-
+  public static void main(String[] args) throws JsonProcessingException {
+    ObjectMapper mapper = new ObjectMapper();
+    Album album1 = new Album(1L, "Taylor Swift", "1989", 2014, 10.5, "Pop, Rock, Electronic");
+    System.out.println(album1.getArtist());
+    System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(album1));
   }
 }
