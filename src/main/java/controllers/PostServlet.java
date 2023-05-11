@@ -1,4 +1,5 @@
 package controllers;
+import dao.Posts;
 import dao.PostsDaoFactory;
 import models.Post;
 import models.UserPosts;
@@ -20,7 +21,7 @@ public class PostServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     String title = req.getParameter("title");
-    String post = req.getParameter("post");
+    String body = req.getParameter("post");
     Post post = new Post(title, body, UserPosts.randomUser());
     Posts postsDao = PostsDaoFactory.getPostsDao();
     postsDao.insert(post);
