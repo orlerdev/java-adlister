@@ -1,20 +1,20 @@
 package models;
 public class Post {
   private String title;
-  private String post;
+  private String body;
   private User user;
 
   public Post() {
   }
 
-  public Post(String title, String post) {
+  public Post(String title, String body) {
     this.title = title;
-    this.post = post;
+    this.body = body;
   }
 
-  public Post(String title, String post, User user) {
+  public Post(String title, String body, User user) {
     this.title = title;
-    this.post = post;
+    this.body = body;
     this.user = user;
   }
 
@@ -26,12 +26,12 @@ public class Post {
     this.title = title;
   }
 
-  public String getPost() {
-    return post;
+  public String getBody() {
+    return body;
   }
 
-  public void setPost(String post) {
-    this.post = post;
+  public void setBody(String body) {
+    this.body = body;
   }
 
   public User getUser() {

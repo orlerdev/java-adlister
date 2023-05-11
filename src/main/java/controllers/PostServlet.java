@@ -1,6 +1,7 @@
 package controllers;
+import dao.PostsDaoFactory;
 import models.Post;
-
+import models.UserPosts;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +21,10 @@ public class PostServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     String title = req.getParameter("title");
     String post = req.getParameter("post");
-    Post submittedPost = new Post(title, post);
-    System.out.println(post);
-    req.setAttribute("post", submittedPost);
-    req.getRequestDispatcher("/blog/createPost.jsp").forward(req, res);
+    Post post = new Post(title, body, UserPosts.randomUser());
+    Posts postsDao = PostsDaoFactory.getPostsDao();
+    postsDao.insert(post);
+    res.sendRedirect("/posts");
   }
 }
 

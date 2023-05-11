@@ -12,15 +12,15 @@
 <form class="container" action="createPost" method="POST">
 	<label for="title">Title:</label>
 	<input type="text" name="title" id="title" />
-	<label for="post">Your Post:</label>
-	<textarea name="post" id="post" cols="30" rows="10"></textarea>
+	<label for="body">Your Post:</label>
+	<textarea name="body" id="body" cols="30" rows="10"></textarea>
 	<input type="submit">
 </form>
 
 <c:if test="${post != null}">
 	<h2>Your blog post:</h2>
 	<h3>${post.title}</h3>
-	<p>${post.post}</p>
+	<p>${post.body}</p>
 </c:if>
 
 </body>
