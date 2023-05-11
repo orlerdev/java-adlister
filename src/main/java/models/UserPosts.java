@@ -1,9 +1,12 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class UserPosts {
+
+  public static ArrayList<Post> allPosts = new ArrayList<>(Arrays.asList(generatePosts()));
 
   public static ArrayList<User> generateUsers() {
     User user1 = new User("johndoe", "johndoe@example.com", "password123");
