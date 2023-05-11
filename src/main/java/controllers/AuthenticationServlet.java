@@ -1,4 +1,5 @@
 package controllers;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +10,8 @@ import java.io.IOException;
 @WebServlet("/login")
 public class AuthenticationServlet extends HttpServlet {
 
-  @Override
-protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-    req.getRequestDispatcher("login.jsp").forward(req, res);
-  }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("login.jsp").forward(req, resp);
+    }
 }

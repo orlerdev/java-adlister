@@ -1,21 +1,21 @@
 package dao;
-import dao.Posts;
+
 import models.Post;
 import models.UserPosts;
 
 import java.util.List;
 
-public class PostsDao implements Posts {
+public class PostsDao implements Posts{
 
-  List<Post> post = UserPosts.allPosts;
+    List<Post> posts = UserPosts.allPosts;
 
-  @Override
-  public List<Post> all() {
-    return posts;
-  }
+    @Override
+    public List<Post> all() {
+        return posts;
+    }
 
-  @Override
-  public void insert(Post post) {
-
-  }
+    @Override
+    public void insert(Post post) {
+        posts.add(post);
+    }
 }
