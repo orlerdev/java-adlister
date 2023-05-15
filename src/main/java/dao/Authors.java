@@ -1,8 +1,10 @@
 package dao;
+import models.Author;
+
 import java.util.List;
 
 public interface Authors {
-  List<Authors> all();
+  List<Author> all();
 
-  void insert(models.Authors authors);
+  void insert(Author authors);
 }

@@ -6,11 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCTest {
-  private static String password = "codeup";
 
   public static void main(String[] args) {
-    for (String first_name : getAuthorNames()) {
-      System.out.println(first_name);
+    for (String name : getAuthorNames()) {
+      System.out.println(name);
     }
   }
 
@@ -20,15 +19,17 @@ public class JDBCTest {
       //USED TO CONNECT TO THE DATABASE
       DriverManager.registerDriver(new Driver());
       //MAKES THE CONNECTION TO THE DATABASE
-      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_design?allowPublicKeyRetrieval=true&useSSL=false",
+      Connection connection = DriverManager.getConnection(
+              "jdbc:mysql://localhost:3306/codeup_test_db?allowPublicKeyRetrieval=true&useSSL=false",
               "root",
-              password);
+              "codeup"
+      );
       //STATEMENT OBJECT NEEDED TO SEND QUERIES TO THE DATABASE
       Statement statement = connection.createStatement();
 
-      ResultSet resultSet = statement.executeQuery("SELECT first_name FROM db_design.authors");
+      ResultSet resultSet = statement.executeQuery("SELECT name FROM authors");
       while (resultSet.next()) {
-        authorNames.add(resultSet.getString("first_name"));
+        authorNames.add(resultSet.getString("name"));
       }
     } catch (SQLException sqlx) {
       sqlx.printStackTrace();
