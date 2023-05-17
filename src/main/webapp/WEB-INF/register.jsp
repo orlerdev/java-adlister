@@ -26,10 +26,12 @@
 		</div>
 
 		<div class="form-group">
-			<label for="confirm-password">Confirm Password</label>
-			<input id="confirm-password" name="confirm-password" class="form-control" type="password" placeholder="Confirm Password...">
+			<label for="confirmPassword">Confirm Password</label>
+			<input id="confirmPassword" name="confirmPassword" class="form-control" type="password"
+						 placeholder="Confirm Password...">
 		</div>
-		<input type="submit" class="btn btn-primary btn-block" value="Log In">
+		<input type="submit" class="btn btn-primary btn-block" value="Register">
+		<span style="display: block; margin-top: 20px;">Already have an account?<a href="<c:url value="/login"/>">Login</a> </span>
 	</form>
 </div>
 </body>

@@ -21,22 +21,38 @@ public class RegisterServlet extends HttpServlet {
       response.sendRedirect("/profile");
       return;
     }
-        request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+    request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
   }
 
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // TODO: ensure the submitted information is valid
-    // TODO: create a new user based off of the submitted information
-    // TODO: if a user was successfully created, send them to their profile
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String username = request.getParameter("username");
     String email = request.getParameter("email");
     String password = request.getParameter("password");
-    boolean validEntries = !username.isBlank() && !email.isBlank() && !password.isBlank();
+    String confirmPassword = request.getParameter("confirmPassword");
+    User user = DaoFactory.getUsersDao().findByUsername(username);
 
-    if (validEntries) {
-      User user = new User(username, email, password);
+
+    // TODO: find a record in your database that matches the submitted password
+    // TODO: make sure we find a user with that username
+    // TODO: check the submitted password against what you have in your database
+
+    if (!inputHasErrors(username, email, password, confirmPassword, user)) {
+      user = new User(username, email, password);
       DaoFactory.getUsersDao().insert(user);
-      response.sendRedirect("/profile");
+      response.sendRedirect("/login");
+    } else {
+      response.sendRedirect("/register");
     }
+    // TODO: store the logged in user object in the session, instead of just the username
+  }
+
+  public static boolean inputHasErrors(String username, String email, String password, String confirmPassword, User user) {
+    if (user != null) {
+      return true;
+    }
+    if (!password.equals(confirmPassword)) {
+      return true;
+    }
+    return false;
   }
 }
